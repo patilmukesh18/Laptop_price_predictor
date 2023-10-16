@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Predictor</title>
+    <style>
+        /* Overall page styling */
+        /* Overall page styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7; /* Light gray background */
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        padding: 20px 0;
+        background-color: #007BFF; /* Blue header background */
+        color: #fff; /* White header text color */
+    }
+
+    /* Form styling */
+    form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333; /* Dark text color for labels */
+    }
+
+    select, input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    select {
+        height: 40px;
+    }
+
+    /* Submit button styling */
+    input[type="submit"] {
+        background-color: #007BFF; /* Blue button background */
+        color: #fff; /* White button text color */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth color transition on hover */
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    /* Styling for dropdowns */
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url('arrow.png'); /* Add a down arrow image */
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 30px; /* Space for the arrow */
+    }
+
+    /* Additional Styles */
+    /* Add more styles here to further enhance the appearance of your page */
+
+    </style>
+</head>
+<body>
+    <h1>Laptop Predictor</h1>
+    <form  method="POST">
+        <!-- Add your input fields here -->
+        <!-- Example: -->
+        <!-- Brand -->
+        <label for="company">Brand:</label>
+        <select id="company" name="company">
+            <option value="Apple">Macbook</option>
+            <option value="HP">HP</option>
+            <option value="Acer">Acer</option>
+            <option value="Asus">Asus</option>
+            <option value="Dell">Dell</option>
+            <option value="Lenovo">Lenovo</option>
+            <option value="Chuwi">Chuwi</option>
+            <option value="MSI">MSI</option>
+            <option value="Microsoft">Microsoft</option>
+            <option value="Toshiba">Toshiba</option>
+            <option value="Huawei">Huawei</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="Vero">Vero</option>
+            <option value="Razer">Razer</option>
+            <option value="Mediacom">Mediacom</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Google">Google</option>
+            <option value="Fujitsu">Fujitsu</option>
+            <option value="LG">LG</option>
+        </select>
+        <br>
+
+
+        <br>
+        <label for="TypeName">Type:</label>
+        <select id="TypeName" name="TypeName">
+            <option value="Notebook">Notebook</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Ultrabook">Ultrabook</option>
+            <option value="2 in 1 Convertible">2 in 1 Convertible</option>
+            <option value="Workstation">Workstation</option>
+            <option value="Netbook">Netbook</option>
+        </select>
+        <br>
+
+        <br>
+        <label for="ram">RAM (in GB):</label>
+        <select id="ram" name="ram">
+            {% for r in df['Ram'].unique() %}
+            <option value="{{ r }}">2</option>
+            <option value="{{ r }}">4</option>
+            <option value="{{ r }}">8</option>
+            <option value="{{ r }}">12</option>
+            <option value="{{ r }}">16</option>
+            <option value="{{ r }}">32</option>
+            <option value="{{ r }}">64</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <!-- Weight of the Laptop -->
+        <label for="weight">Weight of the Laptop:</label>
+        <input type="number" id="weight" name="weight" step="any" required>
+        <br>
+
+        <br>
+        <label for="touchscreen">Touchscreen:</label>
+        <select id="touchscreen" name="touchscreen">
+        {% for option in ["Yes", "No"] %}
+        <option value="{{ option }}">No</option>
+        <option value="{{ option }}">Yes</option>
+        {% endfor %}
+        </select>
+        <br>
+        <br>
+        <!-- IPS -->
+        <label for="ips">IPS:</label>
+        <select id="ips" name="ips">
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+        <br>
+
+        <br>
+        <!-- Screen Size -->
+        <label for="screen_size">Screen Size:</label>
+        <input type="number" id="screen_size" name="screen_size" step="0.01" value="0.00" required>
+        <br>
+
+        <br>
+        <!-- Screen Resolution -->
+        <label for="screen_resolution">Screen Resolution:</label>
+        <select id="screen_resolution" name="screen_resolution">
+            <option value="1920x1080">1920x1080</option>
+            <option value="1366x768">1366x768</option>
+            <option value="1600x900">1600x900</option>
+            <option value="3840x2160">3840x2160</option>
+            <option value="3200x1800">3200x1800</option>
+            <option value="2880x1800">2880x1800</option>
+            <option value="2560x1600">2560x1600</option>
+            <option value="2560x1440">2560x1440</option>
+            <option value="2304x1440">2304x1440</option>
+        </select>
+        <br>
+
+        <br>
+        <!-- CPU -->
+        <label for="cpu">CPU:</label>
+        <select id="cpu" name="cpu">
+            <option value="Intel Core i5">Intel Core i5</option>
+            <option value="Intel Core i7">Intel Core i7</option>
+            <option value="AMD Processor">AMD Processor</option>
+            <option value="Intel Core i3">Intel Core i3</option>
+            <option value="Other Intel Processor">Other Intel Processor</option>
+        </select>
+        <br>
+        <br>
+
+        <!-- HDD (in GB) -->
+        <label for="hdd">HDD (in GB):</label>
+        <select id="hdd" name="hdd">
+            <option value="0">0</option>
+            <option value="128">128</option>
+            <option value="256">256</option>
+            <option value="512">512</option>
+            <option value="1024">1024</option>
+            <option value="2048">2048</option>
+        </select>
+        <br>
+        <br>
+        <!-- SSD (in GB) -->
+        <label for="ssd">SSD (in GB):</label>
+        <select id="ssd" name="ssd">
+            <option value="0">0</option>
+            <option value="128">128</option>
+            <option value="256">256</option>
+            <option value="512">512</option>
+            <option value="1024">1024</option>
+            <option value="2048">2048</option>
+        </select>
+        <br>
+
+        <br>
+        <!-- GPU -->
+        <label for="gpu">GPU:</label>
+        <select id="gpu" name="gpu">
+            <option value="Intel">Intel</option>
+            <option value="AMD">AMD</option>
+            <option value="Nvidia">Nvidia</option>
+        </select>
+        <br>
+        <br>
+
+        <!-- OS -->
+        <!-- Operating System (OS) -->
+        <label for="os">Operating System:</label>
+        <select id="os" name="os">
+            <option value="Mac">Mac</option>
+            <option value="Others/No OS/Linux">Others/No OS/Linux</option>
+            <option value="Windows">Windows</option>
+            <!-- Add more OS options if needed -->
+        </select>
+        <br>
+
+        <!-- Repeat for other input fields -->
+        <input type="submit" value="Predict Price">
+    </form>
+</body>
+</html>
