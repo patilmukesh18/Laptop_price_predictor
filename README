@@ -13,6 +13,6 @@ Source-https://www.kaggle.com/ionaskel/laptop-prices
 Machine Leaning Problem It is a Regresion problem, for a given columns we need to predict the price of laptop.
 
 Performance Metric
-R2 Score
+R2 Score  
 Mean Absolute Error
 
