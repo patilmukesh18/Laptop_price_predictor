@@ -1,4 +1,4 @@
-### Laptop Price Predictor  
+# Laptop Price Predictor  
 
 A web-based application that predicts the price of a laptop based on the configuration input by the user. The project follows the typical stages of the Machine Learning (ML) lifecycle to provide a practical business solution for predicting laptop prices.
 
